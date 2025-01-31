@@ -1,0 +1,161 @@
+[gd_scene load_steps=22 format=3 uid="uid://ca8noouuywpcd"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_63mvq"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_iut3e"]
+[ext_resource type="Texture2D" uid="uid://cya03pnemt4ns" path="res://Assets/Background.png" id="1_xx5rb"]
+[ext_resource type="Texture2D" uid="uid://cfuxcdx27bnc6" path="res://Assets/Flying (32x32).png" id="2_u58mh"]
+[ext_resource type="PackedScene" uid="uid://b2ja614baywi2" path="res://Scenes/pipe.tscn" id="2_yh1in"]
+[ext_resource type="Script" path="res://Scripts/ground.gd" id="5_0l7b6"]
+[ext_resource type="Script" path="res://Scripts/restart_button.gd" id="7_danjq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6lpu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nec03"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsus7"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5jqg"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x883b"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1o8d"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idbvf"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2hmc"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlwlp"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tsq8"]
+atlas = ExtResource("2_u58mh")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqdwh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nec03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsus7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5jqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x883b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1o8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idbvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2hmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlwlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tsq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oo7b8"]
+font_size = 30
+font_color = Color(1, 1, 0, 1)
+outline_size = 9
+outline_color = Color(0.736967, 0, 0.108467, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27yyh"]
+size = Vector2(800, 39)
+
+[sub_resource type="LabelSettings" id="LabelSettings_smbf8"]
+font_size = 50
+font_color = Color(0.816482, 0.085599, 2.88785e-07, 1)
+shadow_size = 17
+shadow_color = Color(0, 0, 0, 0.729412)
+shadow_offset = Vector2(3, -3)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_iut3e")
+pipe_scene = ExtResource("2_yh1in")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_xx5rb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-300, -150)
+script = ExtResource("1_63mvq")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-3, -1)
+shape = SubResource("CircleShape2D_h6lpu")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_gqdwh")
+frame_progress = 0.774816
+flip_h = true
+
+[node name="scoreLabel" type="Label" parent="."]
+offset_left = -297.0
+offset_top = -245.0
+offset_right = -108.0
+offset_bottom = -191.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_oo7b8")
+
+[node name="Ground" type="Area2D" parent="."]
+script = ExtResource("5_0l7b6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 305.5)
+shape = SubResource("RectangleShape2D_27yyh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="gameOverLabel" type="Label" parent="."]
+offset_left = -190.0
+offset_top = -136.0
+offset_right = 173.0
+offset_bottom = -4.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_smbf8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restartButton" type="Button" parent="."]
+offset_left = -38.0
+offset_top = 82.0
+offset_right = 37.0
+offset_bottom = 113.0
+text = "RESTART"
+script = ExtResource("7_danjq")
+
+[connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="restartButton" to="restartButton" method="_on_pressed"]

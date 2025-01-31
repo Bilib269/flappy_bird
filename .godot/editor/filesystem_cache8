@@ -1,0 +1,19 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1738339489
+icon.svg::CompressedTexture2D::1299618526123939231::1738070980::1738339489::1::::<><>::
+README.md::TextFile::-1::1738339103::0::1::::<><>::
+::res://Assets/::1738339447
+Background.png::CompressedTexture2D::6458942349878746072::1738102745::1738339489::1::::<><>::
+Flying (32x32).png::CompressedTexture2D::5166473397449123647::1566645454::1738339489::1::::<><>::
+pipe.png::CompressedTexture2D::6136890107477801520::1738086775::1738339489::1::::<><>::
+::res://Scenes/::1738339458
+game.tscn::PackedScene::4841780922455460275::1738339458::0::1::::<><>::res://Scripts/player.gd<>res://Scripts/game.gd<>uid://cya03pnemt4ns::::res://Assets/Background.png<>uid://cfuxcdx27bnc6::::res://Assets/Flying (32x32).png<>uid://b2ja614baywi2::::res://Scenes/pipe.tscn<>res://Scripts/ground.gd<>res://Scripts/restart_button.gd
+pipe.tscn::PackedScene::4300155631770401443::1738339452::0::1::::<><>::uid://cto0xicxi155m::::res://Assets/pipe.png<>res://Scripts/pipe.gd
+::res://Scripts/::1738339452
+game.gd::GDScript::-1::1738339452::0::1::::<>Node2D<>::
+ground.gd::GDScript::-1::1738275402::0::1::::<>Area2D<>::
+pipe.gd::GDScript::-1::1738275398::0::1::::<>Area2D<>::
+player.gd::GDScript::-1::1738274813::0::1::::<>CharacterBody2D<>::
+restart_button.gd::GDScript::-1::1738330869::0::1::::<>Button<>::
+score_timer.gd::GDScript::-1::1738272592::0::1::::<>Timer<>::
+SignalBus.gd::GDScript::-1::1738330713::0::1::::<>Node<>::
